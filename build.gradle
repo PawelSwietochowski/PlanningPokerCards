@@ -1,0 +1,30 @@
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.0'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    kotlin_version = '1.0.7'
+    support_version = '23.4.0'
+
+    kotlin = "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    androidAppcompat = "com.android.support:appcompat-v7:$support_version"
+    androidSupport = "com.android.support:support-v4:$support_version"
+    androidDesign = "com.android.support:design:$support_version"
+    seismic = 'com.squareup:seismic:1.0.2'
+}
