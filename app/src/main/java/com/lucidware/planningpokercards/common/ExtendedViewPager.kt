@@ -1,5 +1,6 @@
 package com.lucidware.planningpokercards.common
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.hardware.SensorManager
@@ -33,6 +34,7 @@ class ExtendedViewPager : ViewPager, ShakeDetector.Listener {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(ev: MotionEvent): Boolean {
         return canScroll && super.onTouchEvent(ev)
     }

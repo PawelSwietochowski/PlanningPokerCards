@@ -31,13 +31,11 @@ class CardsAdapter(private val cardsArray: Array<Card>) : PagerAdapter(), CardVi
         return super.getItemPosition(obj)
     }
 
-    override fun isViewFromObject(view: View?, obj: Any?): Boolean {
+    override fun isViewFromObject(view: View, obj: Any): Boolean {
         return view === (obj as View)
     }
 
-    override fun getCount(): Int {
-        return cardsArray.size
-    }
+    override fun getCount() = cardsArray.size
 
     override fun destroyItem(parent: ViewGroup, position: Int, view: Any) {
         parent.removeView(view as View)

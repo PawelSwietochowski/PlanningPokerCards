@@ -3,15 +3,12 @@ package com.lucidware.planningpokercards
 import android.app.Activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.RecyclerView
-import com.lucidware.planningpokercards.common.bindView
+import kotlinx.android.synthetic.main.activity_all_cards.*
 
 /**
  * Created by Paweł Świętochowski.
  */
 class AllCardsActivity : AppCompatActivity(), CardViewHolder.CardClickedListener {
-
-    private val cardsList: RecyclerView by bindView(R.id.cardsList)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -11,11 +11,13 @@ import android.view.animation.Interpolator
  */
 object AnimationFactory {
 
-    fun getFlipAnimation(fromView: View,
-                         dir: FlipDirection,
-                         duration: Long,
-                         interpolator: Interpolator,
-                         animationListener: AnimationListener): Array<Animation> {
+    fun getFlipAnimation(
+            fromView: View,
+            dir: FlipDirection,
+            duration: Long,
+            interpolator: Interpolator,
+            animationListener: AnimationListener
+    ): Array<Animation> {
         val centerX = fromView.width / 2.0f
         val centerY = fromView.height / 2.0f
 
@@ -27,18 +29,14 @@ object AnimationFactory {
 
         val outAnimation = AnimationSet(true)
         outAnimation.addAnimation(outFlip)
+
         outAnimation.setAnimationListener(object : AnimationListener {
             override fun onAnimationStart(animation: Animation) {
                 animationListener.onAnimationStart(animation)
             }
 
-            override fun onAnimationEnd(animation: Animation) {
-
-            }
-
-            override fun onAnimationRepeat(animation: Animation) {
-
-            }
+            override fun onAnimationEnd(animation: Animation) {}
+            override fun onAnimationRepeat(animation: Animation) {}
         })
 
         val inFlip = FlipAnimation(dir.startDegreeForSecondView, dir.endDegreeForSecondView,
@@ -50,18 +48,15 @@ object AnimationFactory {
 
         val inAnimation = AnimationSet(true)
         inAnimation.addAnimation(inFlip)
-        inAnimation.setAnimationListener(object : AnimationListener {
-            override fun onAnimationStart(animation: Animation) {
 
-            }
+        inAnimation.setAnimationListener(object : AnimationListener {
+            override fun onAnimationStart(animation: Animation) {}
 
             override fun onAnimationEnd(animation: Animation) {
                 animationListener.onAnimationEnd(animation)
             }
 
-            override fun onAnimationRepeat(animation: Animation) {
-
-            }
+            override fun onAnimationRepeat(animation: Animation) {}
         })
 
         return arrayOf(outAnimation, inAnimation)

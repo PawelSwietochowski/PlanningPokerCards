@@ -4,6 +4,7 @@ package com.lucidware.planningpokercards.common.animations
  * Created by Paweł Świętochowski.
  */
 enum class FlipDirection {
+
     LEFT_TO_RIGHT,
     RIGHT_TO_LEFT;
 
@@ -14,7 +15,6 @@ enum class FlipDirection {
             return when (this) {
                 LEFT_TO_RIGHT -> 90f
                 RIGHT_TO_LEFT -> -90f
-                else -> 0f
             }
         }
 
@@ -23,7 +23,6 @@ enum class FlipDirection {
             return when (this) {
                 LEFT_TO_RIGHT -> -90f
                 RIGHT_TO_LEFT -> 90f
-                else -> return 0f
             }
         }
 

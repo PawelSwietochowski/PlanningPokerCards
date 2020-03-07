@@ -21,7 +21,7 @@ abstract class FlipAnimator : ViewAnimator, Animation.AnimationListener {
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
 
-    open fun doFlipTransition() {
+    fun doFlipTransition() {
         isFlipping = true
         val currentIndex = displayedChild
         val nextIndex = (currentIndex + 1) % childCount
@@ -42,9 +42,7 @@ abstract class FlipAnimator : ViewAnimator, Animation.AnimationListener {
         isFlipping = false
     }
 
-    override fun onAnimationStart(animation: Animation?) {
-    }
+    override fun onAnimationStart(animation: Animation?) {}
 
-    override fun onAnimationRepeat(animation: Animation?) {
-    }
+    override fun onAnimationRepeat(animation: Animation?) {}
 }

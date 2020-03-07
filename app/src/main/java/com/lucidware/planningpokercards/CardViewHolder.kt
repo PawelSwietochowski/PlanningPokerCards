@@ -2,8 +2,7 @@ package com.lucidware.planningpokercards
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import android.widget.ImageView
-import com.lucidware.planningpokercards.common.bindView
+import kotlinx.android.synthetic.main.card_miniature.view.*
 
 /**
  * Created by Paweł Świętochowski.
@@ -11,10 +10,9 @@ import com.lucidware.planningpokercards.common.bindView
 class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
     private var listener: CardClickedListener? = null
-    private val cardMiniatureImageView: ImageView by bindView(R.id.cardMiniatureImageView)
 
     fun bind(cardImageResId: Int) {
-        cardMiniatureImageView.setImageResource(cardImageResId)
+        itemView.cardMiniatureImageView.setImageResource(cardImageResId)
         itemView.setOnClickListener(this)
     }
 

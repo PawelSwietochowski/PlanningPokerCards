@@ -4,10 +4,9 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Animation
-import android.widget.ImageView
 import com.lucidware.planningpokercards.common.animations.FlipAnimator
 import com.lucidware.planningpokercards.common.animations.FlipDirection
-import com.lucidware.planningpokercards.common.bindView
+import kotlinx.android.synthetic.main.view_card.view.*
 
 /**
  * Created by Paweł Świętochowski.
@@ -20,10 +19,6 @@ class CardView : FlipAnimator {
 
     private lateinit var card: Card
     private var listener: CardSwipedListener? = null
-
-    private val cardImageView: ImageView by bindView(R.id.cardImageView)
-    private val cardReverseView: ImageView by bindView(R.id.cardReverseView)
-
 
     constructor(context: Context) : super(context) {
         initialize(context)
@@ -49,7 +44,7 @@ class CardView : FlipAnimator {
         displayedChild = if (card.showingReverse) CARD_REVERSE else CARD_IMAGE
     }
 
-    fun setOnCardSwipedListener(listener: CardView.CardSwipedListener?) {
+    fun setOnCardSwipedListener(listener: CardSwipedListener?) {
         this.listener = listener
     }
 

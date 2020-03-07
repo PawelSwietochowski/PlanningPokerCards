@@ -4,12 +4,10 @@ import android.app.Activity
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
-import com.lucidware.planningpokercards.common.ExtendedViewPager
-import com.lucidware.planningpokercards.common.bindView
+import kotlinx.android.synthetic.main.activity_show_card.*
 
 /**
  * Created by Paweł Świętochowski.
@@ -31,10 +29,6 @@ class ShowCardActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Ca
             Card(R.drawable.question, R.color.cardQuestion)
     )
 
-    private val floatingActionButton: FloatingActionButton by bindView(R.id.fab)
-    private val viewPager: ExtendedViewPager by bindView(R.id.viewPager)
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_card)
@@ -53,11 +47,9 @@ class ShowCardActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Ca
         overridePendingTransition(R.anim.in_anim, 0)
     }
 
-    override fun onPageScrollStateChanged(state: Int) {
-    }
+    override fun onPageScrollStateChanged(state: Int) {}
 
-    override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-    }
+    override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
 
     override fun onPageSelected(position: Int) {
         adjustFabColor(pokerCards[position])
@@ -70,7 +62,7 @@ class ShowCardActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Ca
     override fun onCardSwiped(card: Card) {
         pokerCards.forEach { it.showingReverse = card.showingReverse }
         adjustFabColor(card)
-        viewPager.adapter.notifyDataSetChanged()
+        viewPager.adapter?.notifyDataSetChanged()
         viewPager.canScroll = true
     }
 

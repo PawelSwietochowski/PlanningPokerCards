@@ -7,12 +7,14 @@ import android.view.animation.Transformation
 /**
  * Created by Paweł Świętochowski.
  */
-class FlipAnimation(private val fromDegrees: Float,
-                    private val toDegrees: Float,
-                    private val centerX: Float,
-                    private val centerY: Float,
-                    scale: Float,
-                    private val scaleType: ScaleUpDown) : Animation() {
+class FlipAnimation(
+        private val fromDegrees: Float,
+        private val toDegrees: Float,
+        private val centerX: Float,
+        private val centerY: Float,
+        scale: Float,
+        private val scaleType: ScaleUpDown
+) : Animation() {
 
     private lateinit var camera: Camera
     private val scale: Float
