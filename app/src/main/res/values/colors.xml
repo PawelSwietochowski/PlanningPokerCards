@@ -2,17 +2,18 @@
 <resources>
     <color name="colorPrimary">#cccccc</color>
     <color name="colorPrimaryDark">#000000</color>
-    <color name="cardHalf">#ffff00</color>
-    <color name="card1">#ff9797</color>
-    <color name="card2">#ff0000</color>
-    <color name="card3">#00dbff</color>
-    <color name="card5">#b323e2</color>
-    <color name="card8">#ff2c8c</color>
-    <color name="card13">#f988ff</color>
-    <color name="card20">#96ff00</color>
-    <color name="card40">#486af9</color>
-    <color name="card100">#ffed97</color>
-    <color name="cardQuestion">#52ff62</color>
-    <color name="cardInfinity">#ff5500</color>
-    <color name="cardReverse">#8C8C8C</color>
+
+    <color name="yellow">#ffff00</color>
+    <color name="peach">#ff9797</color>
+    <color name="red">#ff0000</color>
+    <color name="cyan">#00dbff</color>
+    <color name="violet">#b323e2</color>
+    <color name="magenta">#ff2c8c</color>
+    <color name="pink">#f988ff</color>
+    <color name="lime">#96ff00</color>
+    <color name="blue">#486af9</color>
+    <color name="biscuit">#ffed97</color>
+    <color name="green">#52ff62</color>
+    <color name="orange">#ff5500</color>
+    <color name="gray">#8C8C8C</color>
 </resources>

@@ -7,7 +7,7 @@ import android.hardware.SensorManager
 import android.support.v4.view.ViewPager
 import android.util.AttributeSet
 import android.view.MotionEvent
-import com.lucidware.planningpokercards.CardView
+import com.lucidware.planningpokercards.presentation.CardView
 import com.squareup.seismic.ShakeDetector
 
 /**
@@ -17,21 +17,22 @@ class ExtendedViewPager : ViewPager, ShakeDetector.Listener {
 
     var canScroll = true
 
-    constructor(context: Context): super(context) {
-        initializeShakeDetector()
-    }
+    private val shakeDetector = ShakeDetector(this)
 
-    constructor(context: Context, attrs: AttributeSet): super(context, attrs) {
-        initializeShakeDetector()
-    }
+    constructor(context: Context) : super(context)
 
-    private fun initializeShakeDetector() {
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
+
+    fun startShakeDetector() {
         if (!isInEditMode) {
             val sensorManager = context.getSystemService(Activity.SENSOR_SERVICE) as SensorManager
-            val shakeDetector = ShakeDetector(this)
             shakeDetector.setSensitivity(ShakeDetector.SENSITIVITY_LIGHT)
             shakeDetector.start(sensorManager)
         }
+    }
+
+    fun stopShakeDetector() {
+        shakeDetector.stop()
     }
 
     @SuppressLint("ClickableViewAccessibility")

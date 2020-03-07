@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.lucidware.planningpokercards">
 
     <application
-        android:allowBackup="true"
+        android:name=".presentation.App"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="false"
-        android:theme="@style/AppTheme.NoActionBar">
+        android:theme="@style/AppTheme.NoActionBar"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".ShowCardActivity"
+            android:name=".presentation.ShowCardActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +22,7 @@
         </activity>
 
         <activity
-            android:name=".AllCardsActivity"
+            android:name=".presentation.AllCardsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar.Transparent"/>
     </application>

@@ -2,7 +2,6 @@ package com.lucidware.planningpokercards.common.animations
 
 import android.view.View
 import android.view.animation.Animation
-import android.view.animation.Animation.AnimationListener
 import android.view.animation.AnimationSet
 import android.view.animation.Interpolator
 
@@ -16,13 +15,19 @@ object AnimationFactory {
             dir: FlipDirection,
             duration: Long,
             interpolator: Interpolator,
-            animationListener: AnimationListener
+            animationListener: Animation.AnimationListener
     ): Array<Animation> {
         val centerX = fromView.width / 2.0f
         val centerY = fromView.height / 2.0f
 
-        val outFlip = FlipAnimation(dir.startDegreeForFirstView, dir.endDegreeForFirstView,
-                centerX, centerY, FlipAnimation.DEFAULT_SCALE, ScaleUpDown.SCALE_DOWN)
+        val outFlip = FlipAnimation(
+                dir.startDegreeForFirstView,
+                dir.endDegreeForFirstView,
+                centerX,
+                centerY,
+                FlipAnimation.DEFAULT_SCALE,
+                ScaleUpDown.SCALE_DOWN
+        )
         outFlip.duration = duration
         outFlip.fillAfter = true
         outFlip.interpolator = interpolator
@@ -30,17 +35,20 @@ object AnimationFactory {
         val outAnimation = AnimationSet(true)
         outAnimation.addAnimation(outFlip)
 
-        outAnimation.setAnimationListener(object : AnimationListener {
+        outAnimation.setAnimationListener(object : AnimationListener() {
             override fun onAnimationStart(animation: Animation) {
                 animationListener.onAnimationStart(animation)
             }
-
-            override fun onAnimationEnd(animation: Animation) {}
-            override fun onAnimationRepeat(animation: Animation) {}
         })
 
-        val inFlip = FlipAnimation(dir.startDegreeForSecondView, dir.endDegreeForSecondView,
-                centerX, centerY, FlipAnimation.DEFAULT_SCALE, ScaleUpDown.SCALE_UP)
+        val inFlip = FlipAnimation(
+                dir.startDegreeForSecondView,
+                dir.endDegreeForSecondView,
+                centerX,
+                centerY,
+                FlipAnimation.DEFAULT_SCALE,
+                ScaleUpDown.SCALE_UP
+        )
         inFlip.duration = duration
         inFlip.fillAfter = true
         inFlip.interpolator = interpolator
@@ -49,14 +57,10 @@ object AnimationFactory {
         val inAnimation = AnimationSet(true)
         inAnimation.addAnimation(inFlip)
 
-        inAnimation.setAnimationListener(object : AnimationListener {
-            override fun onAnimationStart(animation: Animation) {}
-
+        inAnimation.setAnimationListener(object : AnimationListener() {
             override fun onAnimationEnd(animation: Animation) {
                 animationListener.onAnimationEnd(animation)
             }
-
-            override fun onAnimationRepeat(animation: Animation) {}
         })
 
         return arrayOf(outAnimation, inAnimation)

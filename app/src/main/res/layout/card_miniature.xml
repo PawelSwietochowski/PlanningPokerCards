@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="134dp">
+    android:layout_height="134dp"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
         android:id="@+id/cardMiniatureImageView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:contentDescription="@string/card"
-        android:padding="8dp"
-        android:src="@drawable/reverse_m"/>
+        android:padding="@dimen/card_miniature_margin"
+        tools:src="@drawable/question_m" />
 </FrameLayout>

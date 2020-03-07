@@ -43,7 +43,8 @@ class FlipAnimation(
                 scaleType.getCurrentZoomLevel(scale, interpolatedTime),
                 scaleType.getCurrentZoomLevel(scale, interpolatedTime),
                 centerX,
-                centerY)
+                centerY
+        )
     }
 
     companion object {

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context="com.lucidware.planningpokercards.ShowCardActivity">
+    tools:context="com.lucidware.planningpokercards.presentation.ShowCardActivity">
 
     <com.lucidware.planningpokercards.common.ExtendedViewPager
         android:id="@+id/viewPager"
@@ -20,7 +20,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         android:src="@drawable/menu"
-        app:elevation="6dp"
-        app:pressedTranslationZ="10dp"/>
+        app:elevation="@dimen/fab_elevation"
+        app:pressedTranslationZ="@dimen/fab_pressed_translation_z"/>
 
 </FrameLayout>

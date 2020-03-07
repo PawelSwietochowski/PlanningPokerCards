@@ -1,5 +1,10 @@
 <resources>
-    <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="card_margin">16dp</dimen>
+    <dimen name="card_miniature_margin">8dp</dimen>
+
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="fab_elevation">6dp</dimen>
+    <dimen name="fab_pressed_translation_z">2dp</dimen>
 </resources>

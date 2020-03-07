@@ -16,6 +16,7 @@ abstract class FlipAnimator : ViewAnimator, Animation.AnimationListener {
     protected abstract val interpolator: Interpolator
 
     protected var isFlipping = false
+        private set
 
     constructor(context: Context) : super(context)
 
@@ -27,8 +28,13 @@ abstract class FlipAnimator : ViewAnimator, Animation.AnimationListener {
         val nextIndex = (currentIndex + 1) % childCount
         val flipDirection = if (nextIndex < currentIndex) flipDirection.reversed() else flipDirection
 
-        val inOutAnimations = AnimationFactory.getFlipAnimation(currentView, flipDirection,
-                animationDuration, interpolator, this)
+        val inOutAnimations = AnimationFactory.getFlipAnimation(
+                currentView,
+                flipDirection,
+                animationDuration,
+                interpolator,
+                this
+        )
 
         outAnimation = inOutAnimations[0]
         inAnimation = inOutAnimations[1]
@@ -36,13 +42,13 @@ abstract class FlipAnimator : ViewAnimator, Animation.AnimationListener {
         showNext()
     }
 
-    override fun onAnimationEnd(animation: Animation?) {
+    override fun onAnimationEnd(animation: Animation) {
         outAnimation = null
         inAnimation = null
         isFlipping = false
     }
 
-    override fun onAnimationStart(animation: Animation?) {}
+    override fun onAnimationStart(animation: Animation) {}
 
-    override fun onAnimationRepeat(animation: Animation?) {}
+    override fun onAnimationRepeat(animation: Animation) {}
 }
