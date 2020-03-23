@@ -16,7 +16,7 @@ class App: Application() {
         val prefs = getSharedPreferences(CARDS_PREFS_NAME, Context.MODE_PRIVATE)
         val deckInUse = prefs.getString(ACTIVE_DECK_KEY, "")
 
-        DeckHolder.setDeck(if (deckInUse == Deck.T_SHIRT_CARDS.name) Deck.T_SHIRT_CARDS else Deck.STANDARD_CARDS)
+        DeckHolder.setDeck(if (deckInUse == Deck.T_SHIRT_CARDS.id) Deck.T_SHIRT_CARDS else Deck.STANDARD_CARDS)
     }
 }
 

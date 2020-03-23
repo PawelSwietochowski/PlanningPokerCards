@@ -57,7 +57,7 @@ class AllCardsActivity : AppCompatActivity(), CardViewHolder.CardClickedListener
             override fun onTabSelected(tab: TabLayout.Tab) {
                 val deck = if (tab.position == 1) Deck.T_SHIRT_CARDS else Deck.STANDARD_CARDS
                 val prefs = getSharedPreferences(CARDS_PREFS_NAME, Context.MODE_PRIVATE)
-                prefs.edit().putString(ACTIVE_DECK_KEY, deck.name).apply()
+                prefs.edit().putString(ACTIVE_DECK_KEY, deck.id).apply()
                 DeckHolder.setDeck(deck)
                 cardsList.adapter = adapter
             }

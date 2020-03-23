@@ -19,9 +19,9 @@ object DeckHolder {
     }
 }
 
-enum class Deck {
-    STANDARD_CARDS,
-    T_SHIRT_CARDS
+enum class Deck(val id: String) {
+    STANDARD_CARDS("standard"),
+    T_SHIRT_CARDS("t-shirt")
 }
 
 fun createStandardCards() = arrayOf(
