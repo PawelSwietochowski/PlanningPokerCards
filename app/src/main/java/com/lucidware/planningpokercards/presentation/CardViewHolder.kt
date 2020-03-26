@@ -1,6 +1,6 @@
 package com.lucidware.planningpokercards.presentation
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import kotlinx.android.synthetic.main.card_miniature.view.*
 

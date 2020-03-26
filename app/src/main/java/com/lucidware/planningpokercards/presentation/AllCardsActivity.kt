@@ -4,10 +4,10 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.TabLayout
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup
+import com.google.android.material.tabs.TabLayout
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import com.lucidware.planningpokercards.R
 import com.lucidware.planningpokercards.domain.Deck
 import com.lucidware.planningpokercards.domain.DeckHolder

@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.hardware.SensorManager
-import android.support.v4.view.ViewPager
+import androidx.viewpager.widget.ViewPager
 import android.util.AttributeSet
 import android.view.MotionEvent
 import com.lucidware.planningpokercards.presentation.CardView

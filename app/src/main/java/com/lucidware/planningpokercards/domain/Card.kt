@@ -1,7 +1,7 @@
 package com.lucidware.planningpokercards.domain
 
-import android.support.annotation.ColorRes
-import android.support.annotation.DrawableRes
+import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
 
 /**
  * Created by Paweł Świętochowski.

@@ -4,9 +4,9 @@ import android.app.Activity
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
-import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.viewpager.widget.ViewPager
+import androidx.appcompat.app.AppCompatActivity
 import com.lucidware.planningpokercards.R
 import com.lucidware.planningpokercards.domain.Card
 import com.lucidware.planningpokercards.domain.DeckHolder.CARDS
