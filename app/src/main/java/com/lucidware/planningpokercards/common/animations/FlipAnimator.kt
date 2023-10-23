@@ -29,11 +29,11 @@ abstract class FlipAnimator : ViewAnimator, Animation.AnimationListener {
         val flipDirection = if (nextIndex < currentIndex) flipDirection.reversed() else flipDirection
 
         val inOutAnimations = AnimationFactory.getFlipAnimation(
-                currentView,
-                flipDirection,
-                animationDuration,
-                interpolator,
-                this
+            currentView,
+            flipDirection,
+            animationDuration,
+            interpolator,
+            this
         )
 
         outAnimation = inOutAnimations[0]

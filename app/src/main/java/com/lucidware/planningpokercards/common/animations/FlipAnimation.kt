@@ -8,12 +8,12 @@ import android.view.animation.Transformation
  * Created by Paweł Świętochowski.
  */
 class FlipAnimation(
-        private val fromDegrees: Float,
-        private val toDegrees: Float,
-        private val centerX: Float,
-        private val centerY: Float,
-        scale: Float,
-        private val scaleType: ScaleUpDown
+    private val fromDegrees: Float,
+    private val toDegrees: Float,
+    private val centerX: Float,
+    private val centerY: Float,
+    scale: Float,
+    private val scaleType: ScaleUpDown
 ) : Animation() {
 
     private lateinit var camera: Camera
@@ -40,10 +40,10 @@ class FlipAnimation(
         matrix.preTranslate(-centerX, -centerY)
         matrix.postTranslate(centerX, centerY)
         matrix.preScale(
-                scaleType.getCurrentZoomLevel(scale, interpolatedTime),
-                scaleType.getCurrentZoomLevel(scale, interpolatedTime),
-                centerX,
-                centerY
+            scaleType.getCurrentZoomLevel(scale, interpolatedTime),
+            scaleType.getCurrentZoomLevel(scale, interpolatedTime),
+            centerX,
+            centerY
         )
     }
 

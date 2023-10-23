@@ -2,18 +2,20 @@ package com.lucidware.planningpokercards.presentation
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.View
-import kotlinx.android.synthetic.main.card_miniature.view.*
+import com.lucidware.planningpokercards.databinding.CardMiniatureBinding
 
 /**
  * Created by Paweł Świętochowski.
  */
-class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+class CardViewHolder(
+    private val binding: CardMiniatureBinding
+) : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
 
     private var listener: CardClickedListener? = null
 
     fun bind(cardImageResId: Int) {
-        itemView.cardMiniatureImageView.setImageResource(cardImageResId)
-        itemView.cardMiniatureImageView.setOnClickListener(this)
+        binding.cardMiniatureImageView.setImageResource(cardImageResId)
+        binding.cardMiniatureImageView.setOnClickListener(this@CardViewHolder)
     }
 
     fun setOnClickListener(listener: CardClickedListener) {

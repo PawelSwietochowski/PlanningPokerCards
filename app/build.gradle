@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 buildscript {
     repositories {
@@ -17,6 +16,15 @@ keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 
 android {
+    namespace 'com.lucidware.planningpokercards'
+    compileSdk 34
+    defaultConfig {
+        applicationId "com.lucidware.planningpokercards"
+        minSdkVersion 16
+        targetSdkVersion 34
+        versionCode 5
+        versionName "1.2.1"
+    }
     signingConfigs {
         release {
             keyAlias keystoreProperties['keyAlias']
@@ -24,15 +32,6 @@ android {
             storeFile rootProject.file(keystoreProperties['storeFile'])
             storePassword keystoreProperties['storePassword']
         }
-    }
-    compileSdkVersion 29
-    buildToolsVersion "28.0.3"
-    defaultConfig {
-        applicationId "com.lucidware.planningpokercards"
-        minSdkVersion 16
-        targetSdkVersion 29
-        versionCode 3
-        versionName "1.2"
     }
     buildTypes {
         release {
@@ -42,11 +41,21 @@ android {
             signingConfig signingConfigs.release
         }
     }
+    buildFeatures {
+        viewBinding true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.10.0'
     implementation "com.squareup:seismic:1.0.2"
 }

@@ -4,13 +4,13 @@ import android.app.Activity
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.viewpager.widget.ViewPager
-import androidx.appcompat.app.AppCompatActivity
 import com.lucidware.planningpokercards.R
+import com.lucidware.planningpokercards.databinding.ActivityShowCardBinding
 import com.lucidware.planningpokercards.domain.Card
 import com.lucidware.planningpokercards.domain.DeckHolder.CARDS
-import kotlinx.android.synthetic.main.activity_show_card.*
 
 /**
  * Created by Paweł Świętochowski.
@@ -18,22 +18,26 @@ import kotlinx.android.synthetic.main.activity_show_card.*
 class ShowCardActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, CardView.CardSwipedListener {
 
     private val cardsAdapter = CardsAdapter()
+    private lateinit var binding: ActivityShowCardBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_show_card)
+        binding = ActivityShowCardBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        onActivityCreated()
+    }
 
+    private fun onActivityCreated() {
         cardsAdapter.setOnCardSwipedListener(this)
-        viewPager.adapter = cardsAdapter
-        viewPager.addOnPageChangeListener(this)
-        floatingActionButton.setOnClickListener { startAllCardsActivity() }
+        binding.viewPager.adapter = cardsAdapter
+        binding.viewPager.addOnPageChangeListener(this)
+        binding.floatingActionButton.setOnClickListener { startAllCardsActivity() }
         adjustFabColor(CARDS[FIRST_POSITION])
     }
 
     private fun startAllCardsActivity() {
         val intent = Intent(this, AllCardsActivity::class.java)
         startActivityForResult(intent, REQUEST_CODE)
-        overridePendingTransition(R.anim.in_anim, 0)
     }
 
     override fun onPageScrollStateChanged(state: Int) {}
@@ -45,19 +49,19 @@ class ShowCardActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Ca
     }
 
     override fun onCardSwipeStarted() {
-        viewPager.canScroll = false
+        binding.viewPager.canScroll = false
     }
 
     override fun onCardSwiped(card: Card) {
         CARDS.forEach { it.showingReverse = card.showingReverse }
         adjustFabColor(card)
         cardsAdapter.notifyDataSetChanged()
-        viewPager.canScroll = true
+        binding.viewPager.canScroll = true
     }
 
     private fun adjustFabColor(card: Card) {
         val color = ContextCompat.getColor(this, getColorRes(card))
-        floatingActionButton.backgroundTintList = ColorStateList.valueOf(color)
+        binding.floatingActionButton.backgroundTintList = ColorStateList.valueOf(color)
     }
 
     private fun getColorRes(card: Card): Int {
@@ -66,20 +70,20 @@ class ShowCardActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Ca
 
     override fun onResume() {
         super.onResume()
-        viewPager.startShakeDetector()
+        binding.viewPager.startShakeDetector()
     }
 
     override fun onPause() {
         super.onPause()
-        viewPager.stopShakeDetector()
+        binding.viewPager.stopShakeDetector()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
-            viewPager.adapter = cardsAdapter
+            binding.viewPager.adapter = cardsAdapter
             val cardAdapterPosition = data.getIntExtra(CARD_ADAPTER_POSITION_EXTRA, FIRST_POSITION)
-            viewPager.smoothScrollToPosition(cardAdapterPosition, PAGE_SWITCH_DELAY)
+            binding.viewPager.smoothScrollToPosition(cardAdapterPosition, PAGE_SWITCH_DELAY)
             adjustFabColor(CARDS[cardAdapterPosition])
         }
     }

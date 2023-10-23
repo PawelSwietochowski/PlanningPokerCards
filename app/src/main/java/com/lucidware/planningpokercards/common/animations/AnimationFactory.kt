@@ -11,22 +11,22 @@ import android.view.animation.Interpolator
 object AnimationFactory {
 
     fun getFlipAnimation(
-            fromView: View,
-            dir: FlipDirection,
-            duration: Long,
-            interpolator: Interpolator,
-            animationListener: Animation.AnimationListener
+        fromView: View,
+        dir: FlipDirection,
+        duration: Long,
+        interpolator: Interpolator,
+        animationListener: Animation.AnimationListener
     ): Array<Animation> {
         val centerX = fromView.width / 2.0f
         val centerY = fromView.height / 2.0f
 
         val outFlip = FlipAnimation(
-                dir.startDegreeForFirstView,
-                dir.endDegreeForFirstView,
-                centerX,
-                centerY,
-                FlipAnimation.DEFAULT_SCALE,
-                ScaleUpDown.SCALE_DOWN
+            dir.startDegreeForFirstView,
+            dir.endDegreeForFirstView,
+            centerX,
+            centerY,
+            FlipAnimation.DEFAULT_SCALE,
+            ScaleUpDown.SCALE_DOWN
         )
         outFlip.duration = duration
         outFlip.fillAfter = true
@@ -42,12 +42,12 @@ object AnimationFactory {
         })
 
         val inFlip = FlipAnimation(
-                dir.startDegreeForSecondView,
-                dir.endDegreeForSecondView,
-                centerX,
-                centerY,
-                FlipAnimation.DEFAULT_SCALE,
-                ScaleUpDown.SCALE_UP
+            dir.startDegreeForSecondView,
+            dir.endDegreeForSecondView,
+            centerX,
+            centerY,
+            FlipAnimation.DEFAULT_SCALE,
+            ScaleUpDown.SCALE_UP
         )
         inFlip.duration = duration
         inFlip.fillAfter = true

@@ -1,10 +1,9 @@
 package com.lucidware.planningpokercards.presentation
 
-import android.annotation.SuppressLint
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.lucidware.planningpokercards.R
+import androidx.recyclerview.widget.RecyclerView
+import com.lucidware.planningpokercards.databinding.CardMiniatureBinding
 import com.lucidware.planningpokercards.domain.DeckHolder.CARDS
 
 /**
@@ -18,10 +17,9 @@ class AllCardsAdapter : RecyclerView.Adapter<CardViewHolder>(), CardViewHolder.C
         this.listener = listener
     }
 
-    @SuppressLint("InflateParams")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
-        val layoutView = LayoutInflater.from(parent.context).inflate(R.layout.card_miniature, null)
-        val holder = CardViewHolder(layoutView)
+        val binding = CardMiniatureBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val holder = CardViewHolder(binding)
         holder.setOnClickListener(this)
         return holder
     }
@@ -36,6 +34,3 @@ class AllCardsAdapter : RecyclerView.Adapter<CardViewHolder>(), CardViewHolder.C
         listener?.onCardClicked(cardAdapterPosition)
     }
 }
-
-
-

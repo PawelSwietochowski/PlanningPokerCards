@@ -8,7 +8,7 @@ import com.lucidware.planningpokercards.domain.DeckHolder
 /**
  * Created by Paweł Świętochowski.
  */
-class App: Application() {
+class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
