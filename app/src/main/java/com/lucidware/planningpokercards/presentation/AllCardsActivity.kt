@@ -1,13 +1,12 @@
 package com.lucidware.planningpokercards.presentation
 
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import com.google.android.material.tabs.TabLayout
+import com.lucidware.planningpokercards.common.addSystemWindowInsetToPadding
 import com.lucidware.planningpokercards.databinding.ActivityAllCardsBinding
 import com.lucidware.planningpokercards.domain.Deck
 import com.lucidware.planningpokercards.domain.DeckHolder
@@ -21,10 +20,12 @@ class AllCardsActivity : AppCompatActivity(), CardViewHolder.CardClickedListener
     private val adapter = AllCardsAdapter()
     private lateinit var binding: ActivityAllCardsBinding
     private lateinit var deckInUse: Deck
+    private var pickedCardPosition: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAllCardsBinding.inflate(layoutInflater)
+        binding.root.addSystemWindowInsetToPadding()
         setContentView(binding.root)
         onActivityCreated()
     }
@@ -60,7 +61,7 @@ class AllCardsActivity : AppCompatActivity(), CardViewHolder.CardClickedListener
 
             override fun onTabSelected(tab: TabLayout.Tab) {
                 val deck = if (tab.position == 1) Deck.T_SHIRT_CARDS else Deck.STANDARD_CARDS
-                val prefs = getSharedPreferences(CARDS_PREFS_NAME, Context.MODE_PRIVATE)
+                val prefs = getSharedPreferences(CARDS_PREFS_NAME, MODE_PRIVATE)
                 prefs.edit().putString(ACTIVE_DECK_KEY, deck.id).apply()
                 DeckHolder.setDeck(deck)
                 binding.cardsList.adapter = adapter
@@ -69,26 +70,23 @@ class AllCardsActivity : AppCompatActivity(), CardViewHolder.CardClickedListener
     }
 
     override fun onCardClicked(cardAdapterPosition: Int) {
-        val intent = Intent()
-        intent.putExtra(ShowCardActivity.CARD_ADAPTER_POSITION_EXTRA, cardAdapterPosition)
-        setResult(Activity.RESULT_OK, intent)
+        pickedCardPosition = cardAdapterPosition
         finish()
     }
 
-    override fun onBackPressed() {
+    override fun finish() {
         val deckChanged = (deckInUse != DeckHolder.DECK)
-        if (deckChanged) {
+        if (deckChanged || pickedCardPosition != null) {
             val intent = Intent()
-            intent.putExtra(ShowCardActivity.CARD_ADAPTER_POSITION_EXTRA, FIRST_POSITION)
-            setResult(Activity.RESULT_OK, intent)
+            intent.putExtra(ShowCardActivity.CARD_ADAPTER_POSITION_EXTRA, pickedCardPosition ?: FIRST_POSITION)
+            setResult(RESULT_OK, intent)
         }
-
-        super.onBackPressed()
+        super.finish()
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         binding.tabLayout.clearOnTabSelectedListeners()
+        super.onDestroy()
     }
 }
 

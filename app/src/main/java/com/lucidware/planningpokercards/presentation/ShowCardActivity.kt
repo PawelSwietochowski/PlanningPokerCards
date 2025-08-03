@@ -1,6 +1,5 @@
 package com.lucidware.planningpokercards.presentation
 
-import android.app.Activity
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
@@ -8,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.viewpager.widget.ViewPager
 import com.lucidware.planningpokercards.R
+import com.lucidware.planningpokercards.common.addSystemWindowInsetToPadding
 import com.lucidware.planningpokercards.databinding.ActivityShowCardBinding
 import com.lucidware.planningpokercards.domain.Card
 import com.lucidware.planningpokercards.domain.DeckHolder.CARDS
@@ -23,6 +23,7 @@ class ShowCardActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Ca
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityShowCardBinding.inflate(layoutInflater)
+        binding.root.addSystemWindowInsetToPadding()
         setContentView(binding.root)
         onActivityCreated()
     }
@@ -80,7 +81,7 @@ class ShowCardActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Ca
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK && data != null) {
             binding.viewPager.adapter = cardsAdapter
             val cardAdapterPosition = data.getIntExtra(CARD_ADAPTER_POSITION_EXTRA, FIRST_POSITION)
             binding.viewPager.smoothScrollToPosition(cardAdapterPosition, PAGE_SWITCH_DELAY)

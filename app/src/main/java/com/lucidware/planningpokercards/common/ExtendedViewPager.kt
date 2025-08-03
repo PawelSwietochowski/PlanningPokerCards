@@ -27,7 +27,7 @@ class ExtendedViewPager : ViewPager, ShakeDetector.Listener {
         if (!isInEditMode) {
             val sensorManager = context.getSystemService(Activity.SENSOR_SERVICE) as SensorManager
             shakeDetector.setSensitivity(ShakeDetector.SENSITIVITY_LIGHT)
-            shakeDetector.start(sensorManager)
+            shakeDetector.start(sensorManager, SensorManager.SENSOR_DELAY_GAME)
         }
     }
 
@@ -45,7 +45,7 @@ class ExtendedViewPager : ViewPager, ShakeDetector.Listener {
     }
 
     override fun hearShake() {
-        val cardView = findViewWithTag(currentItem) as CardView?
+        val cardView: CardView? = findViewWithTag(currentItem)
         cardView?.swipeCard()
     }
 

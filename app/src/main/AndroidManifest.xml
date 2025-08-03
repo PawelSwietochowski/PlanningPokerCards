@@ -11,25 +11,19 @@
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning"
         android:fullBackupContent="false"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        tools:targetApi="s">
+        android:dataExtractionRules="@xml/data_extraction_rules">
         <activity
             android:name=".presentation.ShowCardActivity"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <activity
             android:name=".presentation.AllCardsActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar.Transparent"
-            tools:ignore="LockedOrientationActivity" />
+            android:theme="@style/AppTheme.NoActionBar.Transparent" />
     </application>
 
 </manifest>
